@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect,Fragment } from "react";
 import Nbody from "./components/AppBody";
-import test from "./components/test";
+import HistoryScreening from "./components/HistoryScreening";
 import Nhead from "./components/AppHeader";
+import home from "./components/Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from "./components/SignIn";
 
@@ -20,18 +21,25 @@ function App() {
   }
   
   return (
+    <div>
     <Router>
-      <div>
+      
+      {token && (
+        <Fragment>
         <Nhead />
 
         <Switch>
-        <Route exact path="/" component={test} />
-          <Route exact path="/Nbody" component={Nbody} />
+        <Route exact path="/" component={home} />
+        <Route exact path="/HistoryScreening" component={HistoryScreening} />
+        <Route exact path="/Nbody" component={Nbody} />
           
         </Switch>
-
-      </div>
+        </Fragment>
+      
+      )}
+      
     </Router>
+    </div>
   );
 }
 ///<Route exact path="/บันทึก" component={test} />

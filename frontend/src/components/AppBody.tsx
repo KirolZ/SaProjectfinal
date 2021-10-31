@@ -164,7 +164,7 @@ function Body() {
     return (
 
         <Container className={classes.container} maxWidth="md">
-          <Snackbar open={success} autoHideDuration={2000} onClose={handleClose} TransitionProps={{onExit: () => {window.location.href="/";}}}>
+          <Snackbar open={success} autoHideDuration={2000} onClose={handleClose} TransitionProps={{onExit: () => {window.location.href="/HistoryScreening";}}}>
             <Alert onClose={handleClose} severity="success">
                บันทึกข้อมูลสำเร็จ
             </Alert>
@@ -228,7 +228,7 @@ function Body() {
                         <p>Nurse</p>
                         <Select
                             
-                            style={{ width: 200 }}
+                            style={{ width: 250 }}
                             variant = "outlined"
                             defaultValue = {0}
                             disabled

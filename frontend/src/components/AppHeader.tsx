@@ -17,6 +17,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
+import History from '@material-ui/icons/Book';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -50,7 +52,8 @@ export default function ButtonAppBar() {
   };
   
   const menu = [
-    { name: "ข้อมูลการซักประวัติ", icon: <HomeIcon />, path: "/" },
+    { name: "หน้าเเรก", icon: <HomeIcon />, path: "/" },
+    { name: "ข้อมูลการซักประวัติ", icon: <History />, path: "/HistoryScreening" },
     { name: "ใบบันทึกผลการซักประวัติ", icon: <AssignmentIcon  />, path: "/Nbody" },
   ]
 
