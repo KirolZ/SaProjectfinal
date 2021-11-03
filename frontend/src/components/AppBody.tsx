@@ -40,14 +40,10 @@ function Body() {
     event: React.ChangeEvent<{ name?: string; value: unknown }>
   ) => {
     const name = event.target.name as keyof typeof Screening;
-    setScreening({
-      ...Screening,
-      [name]: event.target.value,
-    });
+    setScreening({...Screening, [name]: event.target.value,});
   };
 
     const [Screening, setScreening] = useState<Partial<ScreeningInterface>>({});
-
 
 
     const [MedicalRecord, setMedicalRecord] = useState<MedicalRecordInterface[]>([]);
@@ -80,7 +76,8 @@ function Body() {
         const Alert = (props: AlertProps) => {
           return <MuiAlert elevation={6} variant="filled" {...props} />;
         };
-        
+      
+
         const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
           if (reason === "clickaway") {
             return;
@@ -211,9 +208,7 @@ function Body() {
                         <Select
                              value={Screening.MedRecID}
                              onChange={handleChange}
-                             inputProps={{
-                             name: "MedRecID",
-                            }}
+                             inputProps={{name: "MedRecID",}}
                             style={{ width: 200 }}
                             variant = "outlined"
                         >
@@ -244,9 +239,7 @@ function Body() {
                         <Select
                              value={Screening.DiseaseID}
                              onChange={handleChange}
-                             inputProps={{
-                             name: "DiseaseID",
-                            }}
+                             inputProps={{name: "DiseaseID",}}
                             style={{ width: 200 }}
                             variant = "outlined"
                         >
