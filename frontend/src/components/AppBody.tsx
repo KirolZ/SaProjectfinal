@@ -14,7 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { MenuItem } from '@material-ui/core';
-import { MedicalRecordInterface,ScreeningInterface,DiseaseInterface,NurseInterface } from "../models/IUser";
+import { MedicalRecordInterface,ScreeningInterface,DiseaseInterface,NurseInterface } from "../models/IScreening";
 import { Select } from '@material-ui/core';
 import { time } from 'console';
 import Snackbar from "@material-ui/core/Snackbar";
@@ -72,6 +72,7 @@ function Body() {
 
         const [success, setSuccess] = useState(false);
         const [error, setError] = useState(false);
+        const [warning, setWarning] = useState(false);
         
         const Alert = (props: AlertProps) => {
           return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -84,6 +85,7 @@ function Body() {
           }
           setSuccess(false);
           setError(false);
+          setWarning(false);
         };
 
         //Disease
@@ -130,11 +132,16 @@ function Body() {
                 Symptoms: Screening.Symptoms,
                 Weight:typeof Screening.Weight === "string"? parseFloat(Screening.Weight):Screening.Weight,
                 Height: typeof Screening.Height === "string"? parseFloat(Screening.Height):Screening.Height,
-                Temperature: typeof Screening.Temperature=== "string"? parseFloat(Screening.Temperature):Screening.Temperature,
+                Temperature: typeof Screening.Temperature === "string"? parseFloat(Screening.Temperature):Screening.Temperature,
                 PulseRate: typeof Screening.PulseRate === "string"? parseInt(Screening.PulseRate):Screening.PulseRate,
                 RespirationRate: typeof Screening.RespirationRate ==="string"? parseInt(Screening.RespirationRate):Screening.RespirationRate,
                 SeveTime:new Date(),
             };
+            if(data.Weight == null || data.Height == null || data.Temperature == null || data.PulseRate == null || data.RespirationRate == null)  {
+              console.log("กรุณาใส่ข้อมูลให้ครบ")
+              setWarning(true)
+              return
+            }
         
             const apiUrl = "http://localhost:8080/api/CreateScreening";
             const requestOptionsPost = {
@@ -145,7 +152,7 @@ function Body() {
                },
               body: JSON.stringify(data),
             };
-        
+            
             fetch(apiUrl, requestOptionsPost)
               .then((response) => response.json())
               .then((res) => {
@@ -156,21 +163,26 @@ function Body() {
                 }
             });
           }
-          console.log(MedicalRecord)
+          console.log(Screening.Weight)
 
     return (
 
         <Container className={classes.container} maxWidth="md">
-          <Snackbar open={success} autoHideDuration={2000} onClose={handleClose} TransitionProps={{onExit: () => {window.location.href="/HistoryScreening";}}}>
+          <Snackbar open={success} autoHideDuration={1000} onClose={handleClose} TransitionProps={{onExit: () => {window.location.href="/HistoryScreening";}}}>
             <Alert onClose={handleClose} severity="success">
                บันทึกข้อมูลสำเร็จ
             </Alert>
           </Snackbar>
-      <Snackbar open={error} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={error} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
           บันทึกข้อมูลไม่สำเร็จ
         </Alert>
       </Snackbar>
+      <Snackbar open={warning} autoHideDuration={1000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="warning">
+          กรุณาใส่ข้อมูลให้ครบ
+        </Alert>
+        </Snackbar>
             <Paper className={classes.paper}>
                 <Box display="flex" sx={{height: 60}}>
                     <Box flexGrow={1}>
@@ -190,7 +202,7 @@ function Body() {
                             color="primary"
 
                             component={RouterLink}
-                            to="/"   
+                            to="/HistoryScreening"   
                             >
 
                             ข้อมูลการซักประวัติ

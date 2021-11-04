@@ -42,11 +42,5 @@ function App() {
     </div>
   );
 }
-///<Route exact path="/บันทึก" component={test} />
-export default App;
 
-///
-/*
-<Route exact path="/" component={Nbody} />
-        <Route exact path="/test" component={test} />
-  */
+export default App;

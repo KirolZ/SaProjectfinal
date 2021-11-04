@@ -12,7 +12,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { ScreeningInterface } from "../models/IUser";
+import { ScreeningInterface } from "../models/IScreening";
 import { format } from 'date-fns'
 import moment from "moment";
 
@@ -80,7 +80,7 @@ function PreloadScreenings() {
               variant="contained"
               color="primary"
             >
-              สร้างข้อมูล
+               ใบซักประวัติ
             </Button>
           </Box>
         </Box>
