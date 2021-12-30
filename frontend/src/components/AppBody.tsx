@@ -118,7 +118,7 @@ function Body() {
         useEffect(() => {
             getMedicalRecord();
             getDisease();
-            
+         
           }, []);
 
 
@@ -126,7 +126,7 @@ function Body() {
           const submit = () => {
             let data = {
                 MedRecID: Screening.MedRecID,
-                NurseID: Nurse?.ID,
+                NurseID: Nurse.ID,
                 DiseaseID: Screening.DiseaseID,
 
                 Symptoms: Screening.Symptoms,
@@ -135,10 +135,11 @@ function Body() {
                 Temperature: typeof Screening.Temperature === "string"? parseFloat(Screening.Temperature):Screening.Temperature,
                 PulseRate: typeof Screening.PulseRate === "string"? parseInt(Screening.PulseRate):Screening.PulseRate,
                 RespirationRate: typeof Screening.RespirationRate ==="string"? parseInt(Screening.RespirationRate):Screening.RespirationRate,
-                SeveTime:new Date(),
+                
             };
-            if(data.Weight == null || data.Height == null || data.Temperature == null || data.PulseRate == null || data.RespirationRate == null)  {
-              console.log("กรุณาใส่ข้อมูลให้ครบ")
+            if(Number(data.Weight) < 0 || Number(data.Height) < 0 || Number(data.Temperature) < 0 || Number(data.PulseRate) < 0 || Number(data.RespirationRate) < 0
+             || !data.Symptoms  || !data.Weight ||  !data.Height || !data.Temperature || !data.PulseRate || !data.RespirationRate ){
+              console.log("กรุณากรอกข้อมูลให้ครบ หรือ ใส่ข้อมูลให้ถูกต้อง")
               setWarning(true)
               return
             }
@@ -180,7 +181,7 @@ function Body() {
       </Snackbar>
       <Snackbar open={warning} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="warning">
-          กรุณาใส่ข้อมูลให้ครบ
+          กรุณากรอกข้อมูลให้ครบ หรือ ใส่ข้อมูลให้ถูกต้อง
         </Alert>
         </Snackbar>
             <Paper className={classes.paper}>
@@ -224,7 +225,7 @@ function Body() {
                             style={{ width: 200 }}
                             variant = "outlined"
                         >
-                            <MenuItem value={0} key={0}>เลือกชื่อผู้ป่วย</MenuItem>
+                            <MenuItem disabled value={0} key={0}>เลือกชื่อผู้ป่วย</MenuItem>
                             {MedicalRecord.map((item: MedicalRecordInterface) => (
                               <MenuItem value={item.ID} key={item.ID}>{item.Patient_Name}</MenuItem>))}
                         </Select>
@@ -255,7 +256,7 @@ function Body() {
                             style={{ width: 200 }}
                             variant = "outlined"
                         >
-                            <MenuItem value={0} key={0}>เลือกโรค</MenuItem>
+                            <MenuItem disabled value={0} key={0}>เลือกโรค</MenuItem>
                             {Disease.map((item: DiseaseInterface) => (
                               <MenuItem value={item.ID} key={item.ID}>{item.Name}</MenuItem>))}
                         </Select>

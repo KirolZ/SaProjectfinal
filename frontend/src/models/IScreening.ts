@@ -7,7 +7,7 @@ export interface ScreeningInterface {
     Temperature: number,
     PulseRate : number,
     RespirationRate: number,
-    Savedate: Date | null,
+    SaveTime :Date | null,
  
     //fk
     MedRecID: number, 
@@ -16,7 +16,7 @@ export interface ScreeningInterface {
     Disease: DiseaseInterface
     NurseID: number, 
     Nurse : NurseInterface,
-    SeveTime :Date,
+    
 }
 
 export interface NurseInterface {
