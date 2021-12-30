@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) =>
         width: theme.spacing(3),
         height: theme.spacing(3),
       },
-      list: { width: 250 },
+      list: { width: 280 },
   }),
 );
 
@@ -53,8 +53,8 @@ export default function ButtonAppBar() {
   
   const menu = [
     { name: "หน้าเเรก", icon: <HomeIcon />, path: "/" },
-    { name: "ข้อมูลการซักประวัติ", icon: <History />, path: "/HistoryScreening" },
-    { name: "ใบบันทึกผลการซักประวัติ", icon: <AssignmentIcon  />, path: "/Nbody" },
+    { name: "ข้อมูลการซักประวัติเบื้องต้น", icon: <History />, path: "/HistoryScreening" },
+    { name: "ใบบันทึกผลการซักประวัติเบื้องต้น", icon: <AssignmentIcon  />, path: "/Nbody" },
   ]
 
   const [openDrawer, setOpenDrawer] = React.useState(false);

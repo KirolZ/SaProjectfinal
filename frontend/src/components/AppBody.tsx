@@ -192,7 +192,7 @@ function Body() {
                             color="primary"
                             gutterBottom
                         >
-                            ใบบันทึกผลการซักประวัติ
+                            ใบบันทึกผลการซักประวัติเบื้องต้น
                         </Typography>
                         
                     </Box>
@@ -205,7 +205,7 @@ function Body() {
                             to="/HistoryScreening"   
                             >
 
-                            ข้อมูลการซักประวัติ
+                            ข้อมูลการซักประวัติเบื้องต้น
                         </Button>
                         </Box>
                 </Box>

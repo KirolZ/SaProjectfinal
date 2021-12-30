@@ -70,7 +70,7 @@ function PreloadScreenings() {
               color="primary"
               gutterBottom
             >
-              ข้อมูลการซักประวัติ
+              ข้อมูลการซักประวัติเบื้องต้น
             </Typography>
           </Box>
           <Box>
@@ -80,7 +80,7 @@ function PreloadScreenings() {
               variant="contained"
               color="primary"
             >
-               ใบซักประวัติ
+               ใบบันทึกผลซักประวัติเบื้องต้น
             </Button>
           </Box>
         </Box>
